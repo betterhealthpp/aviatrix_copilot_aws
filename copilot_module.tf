@@ -26,38 +26,12 @@ module "copilot_build_aws" {
   default_data_volume_name = var.copilot_data_volume_name
   default_data_volume_size = var.copilot_data_volume_size
 
-
-    # Copilot SGs aren't updating when changes are made here. May need to start with basic "allowed_cidrs" list, then create separate resource block to manage new CIDRs (would also allow for manging src/dest ports for UDP)
   allowed_cidrs = {
-    "HTTPS_access" = {
-      protocol = "tcp"
-      port     = "443"
-      cidrs    = [for n in var.allowed_cidrs_https : n]
-    }
-
-    "spoke_private_cidrs_syslog" = {
-      protocol = "udp"
-      port     = 5000 #need to specify source and destination ports, as UDP src/dest ports differ
-      cidrs    = [for n in local.spoke_private_cidrs : n]
-    }
-
-    "spoke_private_cidrs_netflow" = {
-      protocol = "udp"
-      port     = 31283 #need to specify source and destination ports, as UDP src/dest ports differ
-      cidrs    = [for n in local.spoke_private_cidrs : n]
-    }
-
-    "transit_private_cidrs_syslog" = {
-      protocol = "udp"
-      port     = 5000
-      cidrs    = [for n in local.transit_private_cidrs : n]
-    }
-
-    "transit_private_cidrs_syslog" = {
-      protocol = "udp"
-      port     = 31283
-      cidrs    = [for n in local.transit_private_cidrs : n]
-    }
+    # "HTTPS_access" = {
+    #   protocol = "tcp"
+    #   port     = "443"
+    #   cidrs    = [for n in var.allowed_cidrs_https : n]
+    # }
 
     # If entering Spoke and Transit GW addresses manually, use the following block instead of "spoke_private_cidrs" and "transit_private_cidrs":
     # "avx_gateway_private_ip_addresses_syslog" = {

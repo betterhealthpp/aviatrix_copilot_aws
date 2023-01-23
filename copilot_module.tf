@@ -25,6 +25,7 @@ module "copilot_build_aws" {
   subnet_id                = var.controller_subnet_id
   default_data_volume_name = var.copilot_data_volume_name
   default_data_volume_size = var.copilot_data_volume_size
+  name_prefix              = var.prefix
 
   allowed_cidrs = {
     # "HTTPS_access" = {
@@ -57,6 +58,7 @@ module "copilot_build_aws" {
   #       volume_id = "<< volume id 2 >>"
   #     }
   #   }
+
 }
 
 output "copilot_private_ip" {
@@ -66,3 +68,4 @@ output "copilot_private_ip" {
 output "copilot_public_ip" {
   value = module.copilot_build_aws.public_ip
 }
+

@@ -3,6 +3,11 @@ variable "region_aws" {
   description = "AWS region where Controller exists"
 }
 
+variable "prefix" {
+  type        = string
+  description = "Name prefix for Copilot instance name, security group(s), etc. If no prefix is required, use two double quotes."
+}
+
 # Optional {
 variable "ak_aws" {
   type        = string

@@ -1,8 +1,7 @@
 # AWS: Launch Aviatrix Copilot in Controller Subnet with Terraform
-# These Terraform scripts leverage the Aviatrix Systems Copilot delpoyment in AWS module. 
-# However, this deployment will, by default, launch Copilot in the same subnet as the existing Controller.
-# Additionally, this deployment allows the private IPv4 addresses of the Aviatrix spoke and transit gateways to reach the Copilot instance without the need for manual input. Any external addresses that will need to reach the Copilot instance via HTTPS will need to be configured manually in the `allowed_cidrs_https` variable (those addresses can be modified after Copilot is deployed).
-  #  - [ ] the  in your network to reach the Copilot Instance
+These Terraform scripts leverage the Aviatrix Systems Copilot delpoyment in AWS module. 
+However, this deployment will, by default, launch Copilot in the same subnet as the existing Controller.
+Additionally, this deployment allows the private IPv4 addresses of the Aviatrix spoke and transit gateways to reach the Copilot instance without the need for manual input. Any external addresses that will need to reach the Copilot instance via HTTPS will need to be configured manually in the `allowed_cidrs_https` variable (those addresses can be modified after Copilot is deployed).
 
 ### Prerequisite Option #1: Copy block below to a terraform.tfvars file and assign values to the following variables (do not push to repository):
 ``` hcl

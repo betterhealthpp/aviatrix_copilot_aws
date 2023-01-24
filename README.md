@@ -1,16 +1,10 @@
 # AWS: Launch Aviatrix Copilot in Controller Subnet with Terraform
-## This 
+# These Terraform scripts leverage the Aviatrix Systems Copilot delpoyment in AWS module. 
+# However, this deployment will, by default, launch Copilot in the same subnet as the existing Controller.
+# Additionally, this deployment allows the private IPv4 addresses of the Aviatrix spoke and transit gateways to reach the Copilot instance without the need for manual input. Any external addresses that will need to reach the Copilot instance via HTTPS will need to be configured manually in the `allowed_cidrs_https` variable (those addresses can be modified after Copilot is deployed).
+  #  - [ ] the  in your network to reach the Copilot Instance
 
-### Prerequisite Option #1: Configure the Following Environment Variables in the Terminal:
-``` sh
-export TF_VAR_access_key_aws="__"
-export TF_VAR_secret_access_key_aws="__"
-export TF_VAR_controller_public_ip="__"
-export TF_VAR_controller_username="__"
-export TF_VAR_controller_password="__"
-```
-
-### Prerequisite Option #2: Copy block below to a terraform.tfvars file and assign values to the following variables (do not push to repository):
+### Prerequisite Option #1: Copy block below to a terraform.tfvars file and assign values to the following variables (do not push to repository):
 ``` hcl
 access_key_aws           = 
 secret_access_key_aws    = 
@@ -28,6 +22,15 @@ copilot_data_volume_size =
 allowed_cidrs_https = [
   "1.1.1.1/32", #Example
 ]
+```
+
+### Prerequisite Option #2: If having AWS and Aviatrix Credentials in terraform.tfvars file is undesirable, configure the more sensitive values as environment variables in the terminal and set the remaining variables in a terraform.tfvars file. For example:
+``` sh
+export TF_VAR_access_key_aws="__"
+export TF_VAR_secret_access_key_aws="__"
+export TF_VAR_controller_public_ip="__"
+export TF_VAR_controller_username="__"
+export TF_VAR_controller_password="__"
 ```
 
 |   Variable                 | Description    | Default Value |

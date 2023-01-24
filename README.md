@@ -45,6 +45,6 @@ export TF_VAR_controller_password="__"
 | `controller_subnet_id`     | AWS Subnet ID of Controller instance | N/A |
 | `naming_prefix`            | Optional: Prefix for Copilot instance name, security group(s), etc. | "" |
 | `copilot_instance_size`    | Copilot EC2 type | if left blank (`""`) m5.2xlarge will be used |
-| `copilot_data_volume_name` | Copliot data volume name. Must be a valid EBS volume name (/dev/sd[f-p]) | N/A |
+| `copilot_data_volume_name` | Copliot data volume name. Must be a valid EBS volume name (/dev/sd[f-p]) | "/dev/sdf" |
 | `copilot_data_volume_size` | Copilot data volume size in GB (type = number) | 30 |
 | `allowed_cidrs_https`      | List of CIDRs that will access Copilot via HTTPS (e.g. users' desktop IPv4 addresses) | N/A |

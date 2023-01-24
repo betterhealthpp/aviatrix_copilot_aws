@@ -19,6 +19,6 @@ provider "aviatrix" {
 
 provider "aws" {
   region     = var.region_aws
-  access_key = var.ak_aws
-  secret_key = var.sak_aws
+  access_key = var.access_key_aws
+  secret_key = var.secret_access_key_aws
 }

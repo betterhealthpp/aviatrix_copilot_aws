@@ -1,13 +1,22 @@
-# Run this file after Copilot has been deployed?
+# Collect Private IPs of spoke and transit gateways and translate to /32 CIDRs:
+data "aviatrix_spoke_gateways" "spokes" {}
+data "aviatrix_transit_gateways" "transits" {}
 
+locals {
+  spoke_private_cidrs   = [for x in data.aviatrix_spoke_gateways.spokes.gateway_list[*].private_ip : "${x}/32"]
+  transit_private_cidrs = [for x in data.aviatrix_transit_gateways.transits.gateway_list[*].private_ip : "${x}/32"]
+}
+
+# Gather Copilot Security Group information:
 data "aws_security_group" "copilot_sg" {
   depends_on = [
     module.copilot_build_aws
   ]
-  name   = "${var.prefix}AviatrixCopilotSecurityGroup"
+  name   = "${var.naming_prefix}AviatrixCopilotSecurityGroup"
   vpc_id = var.controller_vpc_id
 }
 
+# Add rules to Copilot SG:
 resource "aws_security_group_rule" "controller_inbound" {
   type      = "ingress"
   from_port = 443
@@ -24,7 +33,7 @@ resource "aws_security_group_rule" "https_inbound" {
   type              = "ingress"
   from_port         = 443
   to_port           = 443
-  protocol          = "udp"
+  protocol          = "tcp"
   cidr_blocks       = [for n in var.allowed_cidrs_https : n]
   security_group_id = data.aws_security_group.copilot_sg.id
 }

@@ -6,6 +6,13 @@ variable "region_aws" {
 variable "prefix" {
   type        = string
   description = "Name prefix for Copilot instance name, security group(s), etc. If no prefix is required, use two double quotes."
+  default     = ""
+}
+
+variable "copilot_instance_size" {
+  type        = string
+  description = "Copilot EC2 type"
+  default     = "" # The empty quotes will default to m5.2xlarge in the module.
 }
 
 # Optional {

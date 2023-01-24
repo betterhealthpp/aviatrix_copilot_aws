@@ -26,6 +26,7 @@ module "copilot_build_aws" {
   default_data_volume_name = var.copilot_data_volume_name
   default_data_volume_size = var.copilot_data_volume_size
   name_prefix              = var.prefix
+  instance_type            = var.copilot_instance_size
 
   allowed_cidrs = {
     # "HTTPS_access" = {

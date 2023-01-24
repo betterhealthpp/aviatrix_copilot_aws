@@ -54,13 +54,13 @@ variable "controller_password" {
 variable "controller_vpc_id" {
   type        = string
   sensitive   = true
-  description = "ID of Controller VPC."
+  description = "AWS VPC ID of Controller."
 }
 
 variable "controller_subnet_id" {
   type        = string
   sensitive   = true
-  description = "Subnet ID of Controller instance."
+  description = "AWS Subnet ID of Controller instance."
 }
 
 variable "allowed_cidrs_https" {

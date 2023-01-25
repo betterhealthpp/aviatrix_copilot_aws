@@ -41,8 +41,8 @@ export TF_VAR_controller_password="__"
 |  `region_aws`              | AWS region where Controller exists | N/A |
 | `controller_public_ip`     | Aviatrix Controller Public IPv4 address   | N/A | 
 | `controller_private_ip`    | Aviatrix Controller Private IPv4 address  | N/A |
-| `controller_vpc_id`        | AWS VPC ID of Controller | N/A |
-| `controller_subnet_id`     | AWS Subnet ID of Controller instance | N/A |
+| `controller_vpc_id`        | Controller VPC ID in AWS | N/A |
+| `controller_subnet_id`     | Controller Subnet ID in AWS | N/A |
 | `naming_prefix`            | Optional: Prefix for Copilot instance name, security group(s), etc. | "" |
 | `copilot_instance_size`    | Copilot EC2 type | if left blank (`""`) m5.2xlarge will be used |
 | `copilot_data_volume_name` | Copliot data volume name. Must be a valid EBS volume name (/dev/sd[f-p]) | "/dev/sdf" |

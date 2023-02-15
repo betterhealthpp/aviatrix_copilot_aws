@@ -9,6 +9,12 @@ variable "aws_profile" {
   description = "AWS credential profile for AWSCLI"
 }
 
+variable "var.backend_s3_bucket" {
+  default     = ""
+  type        = string
+  description = "AWS S3 bucket name for TF remote state"
+}
+
 variable "naming_prefix" {
   type        = string
   description = "Optional: Prefix for Copilot instance name, security group(s), etc."

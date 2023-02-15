@@ -1,3 +1,13 @@
+data "terraform_remote_state" "remote_state_main" {
+  backend = "s3"
+  config = {
+    bucket  = var.backend_s3_bucket
+    key     = "copilot.tfstate"
+    region  = var.region_aws
+    profile = var.aws_profile
+  }
+
+
 module "copilot_build_aws" {
   source                   = "github.com/AviatrixSystems/terraform-modules-copilot.git//copilot_build_aws"
   keypair                  = "copilot_kp" # Name of generated keypair

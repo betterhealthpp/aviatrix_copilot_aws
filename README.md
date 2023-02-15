@@ -5,11 +5,11 @@ Additionally, this deployment allows the private IPv4 addresses of the Aviatrix 
 
 ### Prerequisite Option #1: Copy block below to a terraform.tfvars file and assign values to the following variables (do not push to repository):
 ``` hcl
-access_key_aws           = 
-secret_access_key_aws    = 
+aws_profile		 =
+backend_s3_bucket	 =
+region_aws		 =
 controller_username      = 
 controller_password      = 
-region_aws               = 
 controller_public_ip     = 
 controller_private_ip    = 
 controller_vpc_id        = 
@@ -25,8 +25,8 @@ allowed_cidrs_https = [
 
 ### Prerequisite Option #2: If having AWS and Aviatrix Credentials in terraform.tfvars file is undesirable, configure the more sensitive values as environment variables in the terminal and set the remaining variables in a terraform.tfvars file. For example:
 ``` sh
-export TF_VAR_access_key_aws="__"
-export TF_VAR_secret_access_key_aws="__"
+export TF_VAR_aws_profile="__"
+export TF_VAR_backend_s3_bucket="__"
 export TF_VAR_controller_public_ip="__"
 export TF_VAR_controller_username="__"
 export TF_VAR_controller_password="__"
@@ -34,11 +34,11 @@ export TF_VAR_controller_password="__"
 
 |   Variable                 | Description    | Default Value |
 |     ---                    |     ---        |       ---     |
-| `access_key_aws`           | AWS access key | N/A |
-| `secret_access_key_aws`    | AWS secret access key | N/A |
+| `aws_profile`           | AWSCLI Profile - https://registry.terraform.io/providers/hashicorp/aws/latest/docs#AWS_PROFILE | N/A |
+| `backend_s3_bucket`        | S3 bucket to store remote state in (must be accessible using the `aws_profile` specified) | N/A |
+|  `region_aws`              | AWS region where Controller and remote state S3 bucket exist | N/A |
 |  `controller_username`     | Username to access Aviatrix Controller | N/A|
 |  `controller_password`     | Password associated with username | N/A |
-|  `region_aws`              | AWS region where Controller exists | N/A |
 | `controller_public_ip`     | Aviatrix Controller Public IPv4 address   | N/A | 
 | `controller_private_ip`    | Aviatrix Controller Private IPv4 address  | N/A |
 | `controller_vpc_id`        | Controller VPC ID in AWS | N/A |

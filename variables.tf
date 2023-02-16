@@ -3,7 +3,7 @@ variable "region_aws" {
   description = "AWS region where Controller exists"
 }
 
-variable "aws_profile" {
+variable "profile_aws" {
   default     = ""
   type	      = string
   description = "AWS credential profile for AWSCLI"

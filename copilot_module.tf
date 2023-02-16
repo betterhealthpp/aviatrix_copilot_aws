@@ -4,7 +4,7 @@ data "terraform_remote_state" "remote_state_main" {
     bucket  = var.backend_s3_bucket
     key     = "copilot.tfstate"
     region  = var.region_aws
-    profile = var.aws_profile
+    profile = var.profile_aws
   }
 }
 

@@ -1,14 +1,3 @@
-#Remote Backend for state
-data "terraform_remote_state" "remote_state_main" {
-  backend = "s3"
-  config = {
-    bucket  = var.backend_s3_bucket
-    key     = "copilot-security-group-rules.tfstate"
-    region  = var.region_aws
-    profile = var.aws_profile
-  }
-}
-
 # Collect Private IPs of spoke and transit gateways and translate to /32 CIDRs:
 data "aviatrix_spoke_gateways" "spokes" {}
 data "aviatrix_transit_gateways" "transits" {}

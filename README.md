@@ -3,7 +3,16 @@ These Terraform scripts leverage the Aviatrix Systems Copilot delpoyment in AWS 
 However, this deployment will, by default, launch Copilot in the same subnet as the existing Controller.
 Additionally, this deployment allows the private IPv4 addresses of the Aviatrix spoke and transit gateways to reach the Copilot instance without the need for manual input. Any external addresses that will need to reach the Copilot instance via HTTPS will need to be configured manually in the `allowed_cidrs_https` variable (those addresses can be modified after Copilot is deployed).
 
-### Prerequisite Option #1: Copy block below to a terraform.tfvars file and assign values to the following variables (do not push to repository):
+## Prerequsites
+
+### Terraform version
+Terraform 0.14 or greater is required due to the use of sensitive variable flags.
+
+### Variable management
+
+#### Prerequisite Option #1: terraform.tfvars file
+Copy block below to a terraform.tfvars file and assign values to the following variables (do not push to repository):
+
 ``` hcl
 aws_profile		 =
 backend_s3_bucket	 =
@@ -23,7 +32,8 @@ allowed_cidrs_https = [
 ]
 ```
 
-### Prerequisite Option #2: If having AWS and Aviatrix Credentials in terraform.tfvars file is undesirable, configure the more sensitive values as environment variables in the terminal and set the remaining variables in a terraform.tfvars file. For example:
+#### Prerequisite Option #2: Environment Variables
+If having AWS and Aviatrix Credentials in terraform.tfvars file is undesirable, configure the more sensitive values as environment variables in the terminal and set the remaining variables in a terraform.tfvars file. For example:
 ``` sh
 export TF_VAR_aws_profile="__"
 export TF_VAR_backend_s3_bucket="__"

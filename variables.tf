@@ -9,7 +9,7 @@ variable "aws_profile" {
   description = "AWS credential profile for AWSCLI"
 }
 
-variable "var.backend_s3_bucket" {
+variable "backend_s3_bucket" {
   default     = ""
   type        = string
   description = "AWS S3 bucket name for TF remote state"

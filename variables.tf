@@ -4,13 +4,11 @@ variable "region_aws" {
 }
 
 variable "profile_aws" {
-  default     = ""
   type	      = string
   description = "AWS credential profile for AWSCLI"
 }
 
 variable "backend_s3_bucket" {
-  default     = ""
   type        = string
   description = "AWS S3 bucket name for TF remote state"
 }

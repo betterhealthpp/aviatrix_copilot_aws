@@ -6,7 +6,7 @@ data "terraform_remote_state" "remote_state_main" {
     region  = var.region_aws
     profile = var.aws_profile
   }
-
+}
 
 module "copilot_build_aws" {
   source                   = "github.com/AviatrixSystems/terraform-modules-copilot.git//copilot_build_aws"

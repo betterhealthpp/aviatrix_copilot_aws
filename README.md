@@ -14,7 +14,7 @@ Terraform 0.14 or greater is required due to the use of sensitive variable flags
 Copy block below to a terraform.tfvars file and assign values to the following variables (do not push to repository):
 
 ``` hcl
-aws_profile		 =
+profile_aws		 =
 backend_s3_bucket	 =
 region_aws		 =
 controller_username      = 
@@ -35,7 +35,7 @@ allowed_cidrs_https = [
 #### Prerequisite Option #2: Environment Variables
 If having AWS and Aviatrix Credentials in terraform.tfvars file is undesirable, configure the more sensitive values as environment variables in the terminal and set the remaining variables in a terraform.tfvars file. For example:
 ``` sh
-export TF_VAR_aws_profile="__"
+export TF_VAR_profile_aws="__"
 export TF_VAR_backend_s3_bucket="__"
 export TF_VAR_controller_public_ip="__"
 export TF_VAR_controller_username="__"
@@ -44,8 +44,8 @@ export TF_VAR_controller_password="__"
 
 |   Variable                 | Description    | Default Value |
 |     ---                    |     ---        |       ---     |
-| `aws_profile`           | AWSCLI Profile - https://registry.terraform.io/providers/hashicorp/aws/latest/docs#AWS_PROFILE | N/A |
-| `backend_s3_bucket`        | S3 bucket to store remote state in (must be accessible using the `aws_profile` specified) | N/A |
+| `profile_aws`           | AWSCLI Profile - https://registry.terraform.io/providers/hashicorp/aws/latest/docs#AWS_PROFILE | N/A |
+| `backend_s3_bucket`        | S3 bucket to store remote state in (must be accessible using the `profile_aws` specified) | N/A |
 |  `region_aws`              | AWS region where Controller and remote state S3 bucket exist | N/A |
 |  `controller_username`     | Username to access Aviatrix Controller | N/A|
 |  `controller_password`     | Password associated with username | N/A |

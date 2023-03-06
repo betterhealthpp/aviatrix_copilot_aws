@@ -3,6 +3,16 @@ variable "region_aws" {
   description = "AWS region where Controller exists"
 }
 
+variable "profile_aws" {
+  type	      = string
+  description = "AWS credential profile for AWSCLI"
+}
+
+variable "backend_s3_bucket" {
+  type        = string
+  description = "AWS S3 bucket name for TF remote state"
+}
+
 variable "naming_prefix" {
   type        = string
   description = "Optional: Prefix for Copilot instance name, security group(s), etc."
@@ -13,18 +23,6 @@ variable "copilot_instance_size" {
   type        = string
   description = "Copilot EC2 type"
   default     = "" # The empty quotes will default to m5.2xlarge in the module.
-}
-
-variable "access_key_aws" {
-  type        = string
-  sensitive   = true
-  description = "AWS access key"
-}
-
-variable "secret_access_key_aws" {
-  type        = string
-  sensitive   = true
-  description = "AWS secret access key"
 }
 
 variable "controller_public_ip" {

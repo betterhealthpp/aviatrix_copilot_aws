@@ -1,6 +1,6 @@
 variable "region_aws" {
   type        = string
-  description = "AWS region where Controller exists"
+  description = "AWS region where Controller and remote state S3 bucket exist"
 }
 
 variable "profile_aws" {
